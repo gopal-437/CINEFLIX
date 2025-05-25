@@ -1,0 +1,152 @@
+/* src/components/Header/Header.module.css */
+:root {
+    --primary-dark: #0f172a;
+    --primary-blue: #1e3a8a;
+    --accent-blue: #3b82f6;
+    --text-white: #ffffff;
+    --text-light: #f8fafc;
+    --text-gray: #94a3b8;
+  }
+  
+  .header {
+    background-color: rgba(15, 23, 42, 0.9);
+    /* border: 2px solid red; */
+    color: var(--text-white);
+    padding: 0.6rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    height: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(to right, #ffffff, #cbd5e1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 1px;
+  }
+  
+  .offersContainer {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 20px;
+  }
+  
+  .offer {
+    position: absolute;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-light);
+    padding: 0.4rem 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    white-space: nowrap;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    text-align: center;
+    width: 100%;
+  }
+  
+  .offer.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .userMenu {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .userIcon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--accent-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .userIcon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  }
+  
+  .userIcon i {
+    font-size: 1.1rem;
+    color: var(--text-white);
+  }
+  
+  .dropdownMenu {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background-color: rgba(15, 23, 42, 0.95);
+    border-radius: 8px;
+    padding: 0.5rem 0;
+    width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+  }
+  
+  .dropdownMenu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .dropdownItem {
+    padding: 0.6rem 1.5rem;
+    color: var(--text-white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+  }
+  
+  .dropdownItem:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding-left: 1.75rem;
+  }
+  
+  .dropdownItem i {
+    margin-right: 0.75rem;
+    width: 20px;
+    text-align: center;
+  }
+  
+  .dropdownDivider {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 0.25rem 0;
+  }

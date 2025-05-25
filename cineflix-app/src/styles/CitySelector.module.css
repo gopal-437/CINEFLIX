@@ -1,0 +1,87 @@
+/* src/styles/CenteredSearchBox.module.css */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.searchBox {
+  width: 400px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.searchBarContainer {
+  margin-bottom: 20px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.optionsListContainer {
+  margin-bottom: 20px;
+  height: 300px;
+  overflow-y: auto;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: #2b3d4e #f1f1f1;
+}
+
+.optionItem {
+  padding: 12px;
+  cursor: pointer;
+  background-color: white;
+  border-bottom: 1px solid #eee;
+  color: #333;
+}
+
+.optionItem:hover {
+  background-color: #f5f5f5;
+}
+
+.optionItem.selected {
+  background-color: #e3f2fd;
+  font-weight: bold;
+}
+
+.noOptions {
+  padding: 12px;
+  text-align: center;
+  color: #777;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 14px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submitButton:hover {
+  background-color: #1565c0;
+}

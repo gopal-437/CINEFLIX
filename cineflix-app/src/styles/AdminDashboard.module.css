@@ -1,0 +1,114 @@
+.adminContainer {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .adminHeader {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .adminHeader h1 {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  .adminHeader p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+  }
+  
+  .adminForm {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .formGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .formGroup {
+    margin-bottom: 1rem;
+  }
+  
+  .formGroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+  
+  .formGroup select,
+  .formGroup input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .formGroup select:focus,
+  .formGroup input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  }
+  
+  .submitButton {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 2rem auto 0;
+    padding: 1rem;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .submitButton:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+  }
+  
+  .submitButton:not(:disabled):hover {
+    background: #2980b9;
+  }
+  
+  .alert {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #2ecc71;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .alertContent {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  
+  .alertIcon {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }

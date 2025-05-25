@@ -1,0 +1,162 @@
+.profileContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 20px;
+  }
+  
+  .profileCard {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    transform: translateY(0);
+  }
+  
+  .profileCard.editing {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  }
+  
+  .profileHeader {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .avatar {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+    font-size: 32px;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .profileCard.editing .avatar {
+    transform: scale(1.1);
+  }
+  
+  .username {
+    margin: 0;
+    color: #333;
+    font-size: 24px;
+  }
+  
+  .role {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 3px 10px;
+    background: #e0e0e0;
+    border-radius: 15px;
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .profileDetails {
+    margin-bottom: 30px;
+  }
+  
+  .detailItem {
+    margin-bottom: 20px;
+  }
+  
+  .detailItem label {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 5px;
+  }
+  
+  .detailItem p {
+    margin: 0;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    color: #333;
+  }
+  
+  .editInput {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .editInput:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+    outline: none;
+  }
+  
+  .actionButtons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .editButton, .saveButton, .cancelButton {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .editButton {
+    background: #4a90e2;
+    color: white;
+  }
+  
+  .editButton:hover {
+    background: #3a7bc8;
+    transform: translateY(-2px);
+  }
+  
+  .saveButton {
+    background: #4CAF50;
+    color: white;
+  }
+  
+  .saveButton:hover {
+    background: #3e8e41;
+    transform: translateY(-2px);
+  }
+  
+  .cancelButton {
+    background: #f44336;
+    color: white;
+  }
+  
+  .cancelButton:hover {
+    background: #d32f2f;
+    transform: translateY(-2px);
+  }
+  
+  /* Animation for when editing starts */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .profileCard.editing .detailItem {
+    animation: fadeIn 0.3s ease forwards;
+  }
+  
+  .profileCard.editing .detailItem:nth-child(1) { animation-delay: 0.1s; }
+  .profileCard.editing .detailItem:nth-child(2) { animation-delay: 0.2s; }
+  .profileCard.editing .detailItem:nth-child(3) { animation-delay: 0.3s; }
+  .profileCard.editing .detailItem:nth-child(4) { animation-delay: 0.4s; }
