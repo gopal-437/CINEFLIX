@@ -118,7 +118,8 @@ app.post('/signup/submit-form', async (req, res) => {
 
 app.post('/signin/submit-form', async (req, res) => {
   const { email, password } = req.body;
-  const client = new MongoClient(`mongodb://localhost:27017`);
+  // const client = new MongoClient(`mongodb://localhost:27017`);
+  const client = new MongoClient(`mongodb://localhost:27017/cineflix`);
 
   try {
 
