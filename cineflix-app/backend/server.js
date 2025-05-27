@@ -34,7 +34,9 @@ app.use(cookieParser(process.env.COOKIE_SECRET || 'secret-key'));
 
 app.use(cors({
   origin: `${process.env.FRONTEND_URL}`, // Your frontend URL
-  credentials: true  // 👈 ALLOWS COOKIES
+  credentials: true , // 👈 ALLOWS COOKIES
+  methods: ['POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type']
 }));
 
 
