@@ -40,25 +40,7 @@ app.use(cookieParser(process.env.COOKIE_SECRET || 'secret-key'));
 // }));
 
 app.use(cors({
-  origin: function (origin, callback) {
-    // 1. Allow requests with no origin (mobile apps, curl, Postman, etc.)
-    if (!origin) return callback(null, true);
-    
-    // 2. List all allowed origins (frontend URLs)
-    const allowedOrigins = [
-      process.env.FRONTEND_URL,  // Primary frontend URL
-      "http://localhost:3000",   // Local development
-      "https://your-staging-url.vercel.app", // Add others as needed
-    ];
-
-    // 3. Check if the origin is in the allowed list
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
-
-    // 4. Block unapproved origins (optional)
-    return callback(new Error("CORS not allowed for this origin"));
-  },
+  origin: `${process.env.FRONTEND_URL}`,
   credentials: true, // Required for cookies/auth headers
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"], // All common methods
   allowedHeaders: [
