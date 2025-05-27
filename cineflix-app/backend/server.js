@@ -176,6 +176,8 @@ app.get('/api/cities', async (req, res) => {
 
   // console.log("req header",req.headers.cookie);
 
+  console.log("should ne printedded");
+
   try{
   const cities = await getCitiesData(); 
   res.status(200).json(cities);
