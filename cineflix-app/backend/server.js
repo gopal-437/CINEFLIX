@@ -119,13 +119,13 @@ app.post('/signup/submit-form', async (req, res) => {
 app.post('/signin/submit-form', async (req, res) => {
   const { email, password } = req.body;
   // const client = new MongoClient(`mongodb://localhost:27017`);
-  const client = new MongoClient(`mongodb://localhost:27017/cineflix`);
+  const client = new MongoClient(`mongodb+srv://gopal5235:Gopal%405235@cluster0.sq9x3fh.mongodb.net/`);
 
   try {
 
     await client.connect();
   
-    const db = client.db('local'); // Your database name
+    const db = client.db('local-cineflix'); // Your database name
 
     const users = db.collection('user_collection'); // Your collection name
 
