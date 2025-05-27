@@ -42,7 +42,10 @@ app.use(cookieParser(process.env.COOKIE_SECRET || 'secret-key'));
 console.log("origin is ", `${process.env.FRONTEND_URL}`);
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL, // Remove template literal if not needed
+  origin:  (origin, callback) => {
+  console.log("Incoming origin:", origin); // Debug
+  callback(null, true); // Allow all (disable in production)
+}, // Remove template literal if not needed
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"], // Fixed typo
   allowedHeaders: [
