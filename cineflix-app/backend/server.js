@@ -42,17 +42,17 @@ app.use(cookieParser(process.env.COOKIE_SECRET || 'secret-key'));
 console.log("origin is ", `${process.env.FRONTEND_URL}`);
 
 app.use(cors({
-  origin: `${process.env.FRONTEND_URL}`,
-  credentials: true, // Required for cookies/auth headers
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"], // All common methods
+  origin: process.env.FRONTEND_URL, // Remove template literal if not needed
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"], // Fixed typo
   allowedHeaders: [
     "Content-Type",
-    "Authorization",  // For JWT tokens
-    "X-Requested-With", // Common for AJAX
+    "Authorization",
+    "X-Requested-With",
     "Accept",
   ],
-  exposedHeaders: ["Authorization"], // Headers frontend can access
-  maxAge: 86400, // Cache preflight results for 24hrs (reduces OPTIONS spam)
+  exposedHeaders: ["Authorization"],
+  maxAge: 86400,
 }));
 
 
