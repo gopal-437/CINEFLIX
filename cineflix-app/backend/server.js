@@ -39,6 +39,8 @@ app.use(cookieParser(process.env.COOKIE_SECRET || 'secret-key'));
 //   allowedHeaders: ['Content-Type']
 // }));
 
+console.log("origin is ", `${process.env.FRONTEND_URL}`);
+
 app.use(cors({
   origin: `${process.env.FRONTEND_URL}`,
   credentials: true, // Required for cookies/auth headers
