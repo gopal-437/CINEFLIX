@@ -121,6 +121,8 @@ app.post('/signin/submit-form', async (req, res) => {
   // const client = new MongoClient(`mongodb://localhost:27017`);
   const client = new MongoClient(`mongodb+srv://gopal5235:Gopal%405235@cluster0.sq9x3fh.mongodb.net/`);
 
+  console.log("sigin called ");
+
   try {
 
     await client.connect();
@@ -128,6 +130,8 @@ app.post('/signin/submit-form', async (req, res) => {
     const db = client.db('local-cineflix'); // Your database name
 
     const users = db.collection('user_collection'); // Your collection name
+
+    console.log("connext success");
 
     // console.log("connected to MongoDB");
 
