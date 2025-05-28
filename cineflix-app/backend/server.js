@@ -41,24 +41,6 @@ app.use(cookieParser(process.env.COOKIE_SECRET || 'secret-key'));
 
 console.log("origin is ", `${process.env.FRONTEND_URL}`);
 
-app.use(cors({
-  origin:  (origin, callback) => {
-  console.log("Incoming origin:", origin); // Debug
-  callback(null, true); // Allow all (disable in production)
-}, // Remove template literal if not needed
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"], // Fixed typo
-  allowedHeaders: [
-    "Content-Type",
-    "Authorization",
-    "X-Requested-With",
-    "Accept",
-  ],
-  exposedHeaders: ["Authorization"],
-  maxAge: 86400,
-}));
-
-
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
   key_secret: process.env.RAZORPAY_SECRET
