@@ -8,7 +8,7 @@ async function addShowDetails(dataObj) {
         await client.connect();
         console.log('Connected to MongoDB');
     
-        const db = client.db('local');
+        const db = client.db('local-cineflix');
         const shows_collection = db.collection('shows_collection');
         const user_collection = db.collection('user_collection');
         const seats_collection = db.collection('seats_collection');

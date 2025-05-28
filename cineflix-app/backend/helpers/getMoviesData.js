@@ -9,7 +9,7 @@ async function getMoviesData(userEmail) {
         console.log('Connected to MongoDB');
     
         // Select database and collection
-        const db = client.db('local');
+        const db = client.db('local-cineflix');
         const movies_collection = db.collection('movies_collection');
 
         // Find all movies and project only _id and title fields

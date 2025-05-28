@@ -38,7 +38,6 @@ const DownloadTicket = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          // 'Authorization': `Bearer ${yourAuthToken}` // if needed
         },
         body: JSON.stringify(requestData)
       });

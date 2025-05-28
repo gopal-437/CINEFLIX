@@ -10,7 +10,7 @@ async function getProfileData(userEmail) {
         console.log('Connected to MongoDB');
     
         // Select database and collection
-        const db = client.db('local');
+        const db = client.db('local-cineflix');
         const user_collection = db.collection('user_collection');
 
          // Find user by email

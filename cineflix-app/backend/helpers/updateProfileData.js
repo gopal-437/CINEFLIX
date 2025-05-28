@@ -8,7 +8,7 @@ async function updateProfileData(userData) {
         await client.connect();
         console.log('Connected to MongoDB');
 
-        const db = client.db('local');
+        const db = client.db('local-cineflix');
         const user_collection = db.collection('user_collection');
 
         // console.log("at baclksd ",userData);

@@ -14,7 +14,7 @@ async function getMoviesList(city, date) {
     console.log("callededed");
 
     // Select database and collection
-    const db = client.db('local');
+    const db = client.db('local-cineflix');
     const movies_collection = db.collection('movies_collection');
     const show_collection = db.collection('shows_collection');
     const theater_collection = db.collection('theater_collection');

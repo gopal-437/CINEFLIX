@@ -12,7 +12,7 @@ async function addUsers(formData) {
     console.log('Connected to MongoDB');
 
     // Select database and collection (exact names from your screenshot)
-    const db = client.db('local');
+    const db = client.db('local-cineflix');
     const userCollection = db.collection('user_collection');
 
     // Sample users to insert (with hashed passwords)

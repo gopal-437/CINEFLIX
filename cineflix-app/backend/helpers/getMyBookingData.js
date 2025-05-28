@@ -26,7 +26,7 @@ async function getMyBookingData(userEmail) {
         await client.connect();
         console.log('Connected to MongoDB');
 
-        const db = client.db('local');
+        const db = client.db('local-cineflix');
         const user_collection = db.collection('user_collection');
         const booking_collection = db.collection('booking_collection');
         const movie_collection = db.collection('movies_collection');

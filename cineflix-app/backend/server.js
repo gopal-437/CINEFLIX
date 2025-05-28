@@ -42,14 +42,6 @@ app.use(bodyParser.json()); // Parse JSON bodies
 // Middleware setup - Fix this part
 app.use(cookieParser(process.env.COOKIE_SECRET || 'secret-key'));
 
-// app.use(cors({
-//   origin: `${process.env.FRONTEND_URL}`, // Your frontend URL
-//   credentials: true , // 👈 ALLOWS COOKIES
-//   methods: ['POST', 'OPTIONS'],
-//   allowedHeaders: ['Content-Type']
-// }));
-
-console.log("origin is ", `${process.env.FRONTEND_URL}`);
 
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
@@ -131,10 +123,7 @@ app.post('/signup/submit-form', async (req, res) => {
 
 app.post('/signin/submit-form', async (req, res) => {
   const { email, password } = req.body;
-  // const client = new MongoClient(`mongodb://localhost:27017`);
-  const client = new MongoClient(`mongodb+srv://gopal5235:Gopal%405235@cluster0.sq9x3fh.mongodb.net/`);
-
-  console.log("sigin called ");
+  const client = new MongoClient(`${process.env.MONGO_DB_URL}`);
 
   try {
 
@@ -143,10 +132,6 @@ app.post('/signin/submit-form', async (req, res) => {
     const db = client.db('local-cineflix'); // Your database name
 
     const users = db.collection('user_collection'); // Your collection name
-
-    console.log("connext success");
-
-    // console.log("connected to MongoDB");
 
     // 1. Find user by email
     const user = await users.findOne({ email });

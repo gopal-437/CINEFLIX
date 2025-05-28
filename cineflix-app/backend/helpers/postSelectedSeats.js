@@ -17,7 +17,7 @@ async function postSelectedSeats(dataObj) {
         }
 
         // Select database and collections
-        const db = client.db('local');
+        const db = client.db('local-cineflix');
         const shows_collection = db.collection('shows_collection');
         const showSeatStatus_collection = db.collection('showSeatStatus_collection');
 

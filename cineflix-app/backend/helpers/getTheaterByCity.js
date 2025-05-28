@@ -12,7 +12,7 @@ async function getTheaterByCity(city) {
         console.log('Connected to MongoDB');
     
         // Select database and collection
-        const db = client.db('local');
+        const db = client.db('local-cineflix');
         const theater_collection = db.collection('theater_collection');
 
         // Find theaters matching the city and project only id and name

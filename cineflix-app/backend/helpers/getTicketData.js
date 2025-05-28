@@ -9,7 +9,7 @@ async function getTicketData(dataObj) {
         console.log('Connected to MongoDB');
 
         // Select database and collections
-        const db = client.db('local');
+        const db = client.db('local-cineflix');
         const movie_collection = db.collection('movies_collection');
         const booking_collection = db.collection('booking_collection');
         const theater_collection = db.collection('theater_collection');

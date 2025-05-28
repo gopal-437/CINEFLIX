@@ -10,7 +10,7 @@ async function getMovieDetails(city,movieid,date) {
         console.log('Connected to MongoDB');
     
         // Select database and collection
-        const db = client.db('local');
+        const db = client.db('local-cineflix');
         const movies_collection = db.collection('movies_collection');
         const show_collection = db.collection('shows_collection');
         const theater_collection = db.collection('theater_collection');

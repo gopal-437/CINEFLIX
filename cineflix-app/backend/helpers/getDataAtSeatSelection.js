@@ -11,7 +11,7 @@ async function getDataAtSeatSelection(theaterId,movieId,screenId,showTime) {
         console.log('Connected to MongoDB');
     
         // Select database and collection
-        const db = client.db('local');
+        const db = client.db('local-cineflix');
         const movies_collection = db.collection('movies_collection');
         const theater_collection = db.collection('theater_collection');
         const seats_collection = db.collection('seats_collection');

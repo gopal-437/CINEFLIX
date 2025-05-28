@@ -9,7 +9,7 @@ async function updatePaymentDetails(dataObj) {
         console.log('Connected to MongoDB');
 
         // Select database and collections
-        const db = client.db('local');
+        const db = client.db('local-cineflix');
         const payment_collection = db.collection('payment_collection');
         const shows_collection = db.collection('shows_collection');
         const user_collection = db.collection('user_collection');
