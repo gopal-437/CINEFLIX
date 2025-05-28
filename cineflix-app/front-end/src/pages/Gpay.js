@@ -69,6 +69,8 @@ const RazorpayPayment = ({handleProceed, amount, selectedSeats, currency = 'INR'
 
   const displayRazorpay = async () => {
     setLoading(true);
+
+    console.log("razor displau called",process.env.REACT_APP_LOAD_SCRIPT_URL);
     
     try {
       // 1. Load Razorpay script

@@ -75,19 +75,19 @@ const SeatSelection = () => {
       };
 
       // Make POST request
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/postSelectedSeats`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestData)
-      });
+      // const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/postSelectedSeats`, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(requestData)
+      // });
 
-      if (!response.ok) {
-        throw new Error('Booking failed');
-      }
+      // if (!response.ok) {
+      //   throw new Error('Booking failed');
+      // }
 
-      const result = await response.json();
+      // const result = await response.json();
 
       setSelectedSeatsByUser(selectedSeats);
       alert(`Successfully booked ${selectedSeats.length} seats. Total: ₹${calculateTotal()}`);
