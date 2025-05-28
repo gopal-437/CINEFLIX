@@ -30,10 +30,7 @@ const PORT = process.env.PORT;
 // Replace this with your actual frontend URL
 const allowedOrigin = process.env.FRONTEND_URL || 'https://cineflix-ochre.vercel.app/';
 
-app.use(cors({
-  origin: allowedOrigin,
-  credentials: true, // if you are using cookies or authentication
-}));
+app.use(cors());
 
 app.use(bodyParser.json()); // Parse JSON bodies
 // Middleware setup - Fix this part
