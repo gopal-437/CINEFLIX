@@ -31,6 +31,7 @@ const PORT = process.env.PORT;
 const allowedOrigin = process.env.FRONTEND_URL || 'https://cineflix-ochre.vercel.app/';
 
 app.use(cors());
+app.options('*', cors()); 
 
 app.use(bodyParser.json()); // Parse JSON bodies
 // Middleware setup - Fix this part
