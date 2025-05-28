@@ -35,8 +35,8 @@ const corsOption = {
 };
 
 app.use(cors(corsOption));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 
 app.use(bodyParser.json()); // Parse JSON bodies
 // Middleware setup - Fix this part
