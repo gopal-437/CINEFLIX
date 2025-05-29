@@ -59,6 +59,8 @@ const transporter = nodemailer.createTransport({
 
 // Create Order
 app.post('/api/create-razorpay-order', async (req, res) => {
+
+  console.log("create order called");
   try {
     const { amount } = req.body;
     
