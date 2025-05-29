@@ -84,9 +84,10 @@ const RazorpayPayment = ({handleProceed, amount, selectedSeats, currency = 'INR'
         amount: amount * 100 // Convert to paise
       });
 
+      console.log("raxzor pay key",process.env.REACT_APP_RAZORPAY_ID_KEY);
       // 3. Initialize Razorpay
       const options = {
-        key: `${process.env.REACT_APP_RAZORPAY_ID_KEY}`,
+        key: process.env.REACT_APP_RAZORPAY_ID_KEY,
         amount: order.amount,
         currency: order.currency,
         name: "CINEFLIX",
