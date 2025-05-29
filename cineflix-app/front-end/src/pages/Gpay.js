@@ -155,7 +155,11 @@ const RazorpayPayment = ({handleProceed, amount, selectedSeats, currency = 'INR'
         }
       };
 
+      console.log("shoud xxxX");
+
       const rzp = new window.Razorpay(options);
+
+      console.log("not printtttt");
       rzp.open();
       
     } catch (error) {
