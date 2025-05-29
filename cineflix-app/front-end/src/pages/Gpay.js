@@ -96,6 +96,8 @@ const RazorpayPayment = ({handleProceed, amount, selectedSeats, currency = 'INR'
           // Verify payment on backend
           try{
 
+          console.log("submit handler called");
+
           const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/verify-payment`, {
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_order_id: response.razorpay_order_id,
