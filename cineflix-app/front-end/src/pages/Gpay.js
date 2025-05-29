@@ -159,8 +159,10 @@ const RazorpayPayment = ({handleProceed, amount, selectedSeats, currency = 'INR'
 
       const rzp = new window.Razorpay(options);
 
-      console.log("not printtttt");
       rzp.open();
+
+      console.log("after option");
+      
       
     } catch (error) {
       console.error('Payment error:', error);
