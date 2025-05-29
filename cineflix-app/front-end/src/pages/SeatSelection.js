@@ -74,7 +74,7 @@ const SeatSelection = () => {
         updatedValue : "booked",
       };
 
-      Make POST request
+      // Make POST request
       const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/postSelectedSeats`, {
         method: 'POST',
         headers: {
