@@ -226,6 +226,7 @@ app.get('/api/getdataatseatselection', async (req, res) => {
 app.post('/api/postSelectedSeats', async (req, res) => {
 
   try {
+    console.log("post selected seat called at api level");
     const data = await postSelectedSeats(req.body); 
     res.status(200).json(data);
   } catch (error) { 
