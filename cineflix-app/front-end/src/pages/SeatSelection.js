@@ -89,6 +89,8 @@ const SeatSelection = () => {
 
       const result = await response.json();
 
+      console.log("result is ",result);
+
       setSelectedSeatsByUser(selectedSeats);
       alert(`Successfully booked ${selectedSeats.length} seats. Total: ₹${calculateTotal()}`);
 
