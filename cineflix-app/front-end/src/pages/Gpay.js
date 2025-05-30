@@ -18,19 +18,25 @@ function useReleaseSeatsOnTabClose(selectedSeats, movieid, screenId, showTime) {
         updatedValue: "available"
       };
 
-      // Serialize data with Blob for correct content type
-      const blob = new Blob([JSON.stringify(data)], {
-        type: 'application/json'
+      // Use fetch with keepalive instead of sendBeacon
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/api/postSelectedSeats`, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' },
+        keepalive: true  // Critical for unload reliability
       });
-      
-      navigator.sendBeacon(
-        `${process.env.REACT_APP_BACKEND_URL}/api/postSelectedSeats`,
-        blob
-      );
     };
 
+    // Add multiple unload events
     window.addEventListener('beforeunload', releaseSeats);
-    return () => window.removeEventListener('beforeunload', releaseSeats);
+    window.addEventListener('pagehide', releaseSeats);  // For mobile browsers
+    window.addEventListener('unload', releaseSeats);    // Standard unload event
+
+    return () => {
+      window.removeEventListener('beforeunload', releaseSeats);
+      window.removeEventListener('pagehide', releaseSeats);
+      window.removeEventListener('unload', releaseSeats);
+    };
   }, [selectedSeats, movieid, screenId, showTime]);
 }
 
