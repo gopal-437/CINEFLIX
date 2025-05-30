@@ -12,6 +12,8 @@ async function postSelectedSeats(dataObj) {
         await client.connect();
         console.log('Connected to MongoDB');
 
+        console.log("post selected called with obj",dataObj);
+
         const { movieId, screenId, showTime, selectedSeats, updatedValue } = dataObj;
         
         // Validate required fields
