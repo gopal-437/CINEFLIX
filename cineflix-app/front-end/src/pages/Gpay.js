@@ -223,11 +223,12 @@ const RazorpayPayment = ({handleProceed, amount, selectedSeats, currency = 'INR'
 
   return (
     <button 
-      onClick={() => {
-       const st = handleProceed();
+      onClick={async () => {
+       const st = await handleProceed();
         setIsHandleProceedSuccess(st);
+        console.log("proceed succ is ",st);
         if (isHandelProceedSuccess)
-        displayRazorpay();
+        await displayRazorpay();
       }} 
       disabled={loading}
       className={styles.proceedBtn}
