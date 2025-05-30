@@ -39,6 +39,33 @@ async function postSelectedSeats(dataObj) {
         }
         const showId = show._id;
 
+        //add your code here....
+
+        if(updatedValue === 'booked') {
+        // Check if any of the selected seats are already booked
+        const seatIds = selectedSeats.map(seat => 
+            typeof seat._id === 'string' ? new ObjectId(seat._id) : seat._id
+        );
+
+        const bookedSeats = await showSeatStatus_collection.find({
+            showId: showId,
+            seatId: { $in: seatIds },
+            status: 'booked'
+        }).toArray();
+
+        if (bookedSeats.length > 0) {
+            const bookedSeatIds = bookedSeats.map(seat => seat.seatId.toString());
+            console.log("seats already booked");
+            return {
+            status: 'failure',
+            message: `Cannot proceed - the following seats are already booked`,
+            };
+        }
+
+      }
+
+        /////////////
+
         // Prepare seat updates
         const seatUpdates = selectedSeats.map(seat => ({
             updateOne: {
@@ -60,6 +87,7 @@ async function postSelectedSeats(dataObj) {
         const result = await showSeatStatus_collection.bulkWrite(seatUpdates);
 
         return {
+            status: 'success',
             message: `${selectedSeats.length} seats successfully updated`,
         };
 
