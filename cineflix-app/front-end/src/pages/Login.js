@@ -56,12 +56,13 @@ const handleSubmit = async (e) => {
 
   if(response.data.success == false) {
     alert(response.data.message);
-    return; 
   }
 
   setUserEmail(formData.email);
   alert('Form submitted successfully!');
 
+  setLoading(false);
+    
   if(response.data.user.role === 'admin')
   navigate("/admin");
   else navigate("/cityselector");
