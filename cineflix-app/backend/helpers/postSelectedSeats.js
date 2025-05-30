@@ -3,7 +3,7 @@ const { MongoClient, ObjectId } = require('mongodb');
 
 async function postSelectedSeats(dataObj) {
     
-    console.log("post selected seats called with obj",dataobj);
+    // console.log("post selected seats called with obj",dataobj);
     const uri = `${process.env.MONGO_DB_URL}`;
     const client = new MongoClient(uri);
 
