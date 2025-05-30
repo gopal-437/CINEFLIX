@@ -7,35 +7,31 @@ import AppContextProvider from '../redux/appContext/dispatchActionProvider'; // 
 
 function useReleaseSeatsOnTabClose(selectedSeats, movieid, screenId, showTime) {
   useEffect(() => {
-    const handleBeforeUnload = (event) => {
-      // Prepare your data
-      event.preventDefault();
-      
-       const requestData = {
-        selectedSeats: selectedSeats,
-        movieId : movieid,
-        screenId : screenId,
-        showTime : showTime,
-        updatedValue : "available",
+    if (!selectedSeats || selectedSeats.length === 0) return;
+
+    const releaseSeats = () => {
+      const data = {
+        selectedSeats,
+        movieId: movieid,
+        screenId,
+        showTime,
+        updatedValue: "available"
       };
 
-      const data = JSON.stringify(requestData);
-
-      console.log("closing event handler called")
-
-      // Use Beacon API for reliable "fire-and-forget" request
-      navigator.sendBeacon(`${process.env.REACT_APP_BACKEND_URL}/api/postSelectedSeats`, data);
-
-      // Optionally show a confirmation dialog (not customizable in most browsers)
-      event.returnValue = '';
+      // Serialize data with Blob for correct content type
+      const blob = new Blob([JSON.stringify(data)], {
+        type: 'application/json'
+      });
+      
+      navigator.sendBeacon(
+        `${process.env.REACT_APP_BACKEND_URL}/api/postSelectedSeats`,
+        blob
+      );
     };
 
-    window.addEventListener("beforeunload", handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, [selectedSeats]);
+    window.addEventListener('beforeunload', releaseSeats);
+    return () => window.removeEventListener('beforeunload', releaseSeats);
+  }, [selectedSeats, movieid, screenId, showTime]);
 }
 
 const RazorpayPayment = ({handleProceed, amount, selectedSeats, currency = 'INR',}) => {
