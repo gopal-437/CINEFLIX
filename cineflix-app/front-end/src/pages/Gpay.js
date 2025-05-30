@@ -44,7 +44,6 @@ const RazorpayPayment = ({handleProceed, amount, selectedSeats, currency = 'INR'
 
 
   const [loading, setLoading] = useState(false);
-  const [isHandelProceedSuccess, setIsHandleProceedSuccess] = useState(false);
   const { movieid } = useParams();
 
   const screenId = useSelector((state) => state.appContext.screenId);
@@ -225,9 +224,8 @@ const RazorpayPayment = ({handleProceed, amount, selectedSeats, currency = 'INR'
     <button 
       onClick={async () => {
        const st = await handleProceed();
-        setIsHandleProceedSuccess(st);
         console.log("proceed succ is ",st);
-        // if (isHandelProceedSuccess)
+        if (st)
         displayRazorpay();
       }} 
       disabled={loading}
