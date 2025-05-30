@@ -9,6 +9,8 @@ function useReleaseSeatsOnTabClose(selectedSeats, movieid, screenId, showTime) {
   useEffect(() => {
     const handleBeforeUnload = (event) => {
       // Prepare your data
+      event.preventDefault();
+      
        const requestData = {
         selectedSeats: selectedSeats,
         movieId : movieid,
@@ -25,7 +27,6 @@ function useReleaseSeatsOnTabClose(selectedSeats, movieid, screenId, showTime) {
       navigator.sendBeacon(`${process.env.REACT_APP_BACKEND_URL}/api/postSelectedSeats`, data);
 
       // Optionally show a confirmation dialog (not customizable in most browsers)
-      event.preventDefault();
       event.returnValue = '';
     };
 
@@ -47,7 +48,7 @@ const RazorpayPayment = ({handleProceed, amount, selectedSeats, currency = 'INR'
   const showTime = useSelector((state) => state.appContext.showTime);
   const userEmail = useSelector((state) => state.appContext.userEmail);
 
-  useReleaseSeatsOnTabClose(selectedSeats, movieid, screenId, showTime);
+  // useReleaseSeatsOnTabClose(selectedSeats, movieid, screenId, showTime);
   const navigate = useNavigate();
 
   const { setBookingId
