@@ -5,38 +5,38 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AppContextProvider from '../redux/appContext/dispatchActionProvider'; // Import your custom hook
 
-function useReleaseSeatsOnTabClose(selectedSeats, movieid, screenId, showTime) {
-  useEffect(() => {
-    const handleBeforeUnload = (event) => {
-      // Prepare your data
-      event.preventDefault();
+// function useReleaseSeatsOnTabClose(selectedSeats, movieid, screenId, showTime) {
+//   useEffect(() => {
+//     const handleBeforeUnload = (event) => {
+//       // Prepare your data
+//       event.preventDefault();
       
-       const requestData = {
-        selectedSeats: selectedSeats,
-        movieId : movieid,
-        screenId : screenId,
-        showTime : showTime,
-        updatedValue : "available",
-      };
+//        const requestData = {
+//         selectedSeats: selectedSeats,
+//         movieId : movieid,
+//         screenId : screenId,
+//         showTime : showTime,
+//         updatedValue : "available",
+//       };
 
-      const data = JSON.stringify(requestData);
+//       const data = JSON.stringify(requestData);
 
-      console.log("closing event handler called")
+//       console.log("closing event handler called")
 
-      // Use Beacon API for reliable "fire-and-forget" request
-      navigator.sendBeacon(`${process.env.REACT_APP_BACKEND_URL}/api/postSelectedSeats`, data);
+//       // Use Beacon API for reliable "fire-and-forget" request
+//       navigator.sendBeacon(`${process.env.REACT_APP_BACKEND_URL}/api/postSelectedSeats`, data);
 
-      // Optionally show a confirmation dialog (not customizable in most browsers)
-      event.returnValue = '';
-    };
+//       // Optionally show a confirmation dialog (not customizable in most browsers)
+//       event.returnValue = '';
+//     };
 
-    window.addEventListener("beforeunload", handleBeforeUnload);
+//     window.addEventListener("beforeunload", handleBeforeUnload);
 
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, [selectedSeats]);
-}
+//     return () => {
+//       window.removeEventListener("beforeunload", handleBeforeUnload);
+//     };
+//   }, [selectedSeats]);
+// }
 
 const RazorpayPayment = ({handleProceed, amount, selectedSeats, currency = 'INR',}) => {
 
