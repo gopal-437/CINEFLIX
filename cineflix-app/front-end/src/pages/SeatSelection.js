@@ -100,6 +100,8 @@ const SeatSelection = () => {
       setSelectedSeatsByUser(selectedSeats);
       alert(`Successfully booked ${selectedSeats.length} seats. Total: ₹${calculateTotal()}`);
 
+      setLoading(false);  
+
       return true;
 
     } catch (error) {
