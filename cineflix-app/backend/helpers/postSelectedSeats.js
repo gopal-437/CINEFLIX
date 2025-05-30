@@ -5,6 +5,9 @@ async function postSelectedSeats(dataObj) {
     
     const uri = `${process.env.MONGO_DB_URL}`;
     const client = new MongoClient(uri);
+
+    console.log("post selected seats called with obj",dataobj);
+    
     try {
         await client.connect();
         console.log('Connected to MongoDB');
