@@ -30,12 +30,12 @@ function useReleaseSeatsOnTabClose(selectedSeats, movieid, screenId, showTime) {
     // Add multiple unload events
     window.addEventListener('beforeunload', releaseSeats);
     window.addEventListener('pagehide', releaseSeats);  // For mobile browsers
-    window.addEventListener('unload', releaseSeats);    // Standard unload event
+    // window.addEventListener('unload', releaseSeats);    // Standard unload event
 
     return () => {
       window.removeEventListener('beforeunload', releaseSeats);
       window.removeEventListener('pagehide', releaseSeats);
-      window.removeEventListener('unload', releaseSeats);
+      // window.removeEventListener('unload', releaseSeats);
     };
   }, [selectedSeats, movieid, screenId, showTime]);
 }
