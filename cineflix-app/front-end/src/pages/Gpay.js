@@ -227,8 +227,8 @@ const RazorpayPayment = ({handleProceed, amount, selectedSeats, currency = 'INR'
        const st = await handleProceed();
         setIsHandleProceedSuccess(st);
         console.log("proceed succ is ",st);
-        // if (isHandelProceedSuccess)
-        await displayRazorpay();
+        if (isHandelProceedSuccess)
+        displayRazorpay();
       }} 
       disabled={loading}
       className={styles.proceedBtn}
