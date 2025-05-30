@@ -227,6 +227,7 @@ app.post('/api/postSelectedSeats', async (req, res) => {
 
   try {
     console.log("post selected seat called at api level");
+    console.log("at api data os ",req.body);
     const data = await postSelectedSeats(req.body); 
     res.status(200).json(data);
   } catch (error) { 
