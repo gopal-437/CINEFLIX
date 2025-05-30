@@ -148,6 +148,13 @@ const RazorpayPayment = ({handleProceed, amount, selectedSeats, currency = 'INR'
             alert("payment failed");
           }
         },
+        modal: {
+           ondismiss: async function () {
+           // Call your function to remove selected seats
+           console.log("dismiss function called");
+           await removeBooking();
+           }
+        },
         prefill: {
           name: "Customer Name",
           email: "customer@example.com",
