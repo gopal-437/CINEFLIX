@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../styles/landing.module.css";  // Import CSS as an object
 import { useNavigate } from "react-router-dom";
+import AppContextProvider from '../redux/appContext/dispatchActionProvider'; // Import your custom hook
 
 
 function LandingPage() {
@@ -13,6 +14,10 @@ function LandingPage() {
     function signUpClickHandler() {
         navigate("/signup");
     }
+    
+    const {setLoading} = AppContextProvider();
+
+    setLoading(false);
 
     return (
         <>
