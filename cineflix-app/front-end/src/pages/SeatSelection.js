@@ -90,10 +90,17 @@ const SeatSelection = () => {
       const result = await response.json();
 
       console.log("result is ",result);
+      
+      if(result.status === 'failure') {
+        alert(result.message);
+        setLoading(false);
+        return false;
+      }
 
       setSelectedSeatsByUser(selectedSeats);
       alert(`Successfully booked ${selectedSeats.length} seats. Total: ₹${calculateTotal()}`);
 
+      return true;
 
     } catch (error) {
       console.error('Booking error:', error);
