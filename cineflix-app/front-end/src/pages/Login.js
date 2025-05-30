@@ -13,7 +13,7 @@ function LoginPage() {
   });
   const navigate = useNavigate();
 
-  const { setUserEmail
+  const { setUserEmail, setLoading
   } = AppContextProvider();
 
   function signupClickHandler() {
@@ -43,6 +43,8 @@ const handleSubmit = async (e) => {
     return;
   }
 
+  setLoading(true);
+
   try {
     const response = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/signin/submit-form`, 
@@ -68,6 +70,8 @@ const handleSubmit = async (e) => {
   console.error('Error submitting form:', error);
   alert('Failed to submit form. Please try again.');
 }
+
+  setLoading(false);
 }
 
   console.log("backend url", process.env.REACT_APP_BACKEND_URL);
