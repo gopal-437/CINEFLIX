@@ -97,6 +97,19 @@ const SeatSelection = () => {
         return false;
       }
 
+      //making request for schedular data
+       const responseSchedular = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/postSchedularData`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData)
+      });
+
+      if (!responseSchedular.ok) {
+        throw new Error('post schedulardata failed');
+      }
+
       setSelectedSeatsByUser(selectedSeats);
       alert(`Successfully booked ${selectedSeats.length} seats. Total: ₹${calculateTotal()}`);
 

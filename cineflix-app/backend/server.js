@@ -17,6 +17,7 @@ const { getTheaterByCity } = require('./helpers/getTheaterByCity.js');
 const { getScreenByTheater } = require('./helpers/getScreenByTheater.js');
 const { getMoviesData } = require('./helpers/getMoviesData.js');
 const { addShowDetails } = require('./helpers/addShowDetails.js');
+const { postSchedularData } = require('./helpers/postSchedularData.js');
 const cookieParser = require('cookie-parser');
 const { MongoClient } = require('mongodb');
 const bcrypt = require('bcryptjs');
@@ -346,6 +347,15 @@ app.get('/api/getmoviesdata', async (req, res) => {
 app.post('/api/addshowdetails', async (req, res) => {
   try {
     const data = await addShowDetails(req.body); 
+    res.status(200).json(data);
+  } catch (error) { 
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.post('/api/postSchedularData', async (req, res) => {
+  try {
+    const data = await postSchedularData(req.body); 
     res.status(200).json(data);
   } catch (error) { 
     res.status(500).json({ error: 'Internal server error' });
