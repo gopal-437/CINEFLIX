@@ -5,9 +5,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AppContextProvider from '../redux/appContext/dispatchActionProvider'; // Import your custom hook
 
-function useReleaseSeatsOnTabClose(selectedSeats, movieid, screenId, showTime) {
+function useReleaseSeatsOnTabClose(selectedSeats, movieid, screenId, showTime, isHandelProceedSuccess) {
   useEffect(() => {
     if (!selectedSeats || selectedSeats.length === 0) return;
+
+    if(!isHandelProceedSuccess) return;
 
     const releaseSeats = () => {
       const data = {
@@ -44,13 +46,14 @@ const RazorpayPayment = ({handleProceed, amount, selectedSeats, currency = 'INR'
 
 
   const [loading, setLoading] = useState(false);
+  const [isHandelProceedSuccess, setIsHandleProceedSuccess] = useState(false);
   const { movieid } = useParams();
 
   const screenId = useSelector((state) => state.appContext.screenId);
   const showTime = useSelector((state) => state.appContext.showTime);
   const userEmail = useSelector((state) => state.appContext.userEmail);
 
-  useReleaseSeatsOnTabClose(selectedSeats, movieid, screenId, showTime);
+  useReleaseSeatsOnTabClose(selectedSeats, movieid, screenId, showTime, isHandelProceedSuccess);
   const navigate = useNavigate();
 
   const { setBookingId
@@ -225,6 +228,7 @@ const RazorpayPayment = ({handleProceed, amount, selectedSeats, currency = 'INR'
       onClick={async () => {
        const st = await handleProceed();
         console.log("proceed succ is ",st);
+        setIsHandleProceedSuccess(st);
         if (st)
         displayRazorpay();
       }} 
