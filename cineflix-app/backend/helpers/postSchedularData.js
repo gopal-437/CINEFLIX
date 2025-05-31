@@ -32,9 +32,9 @@ async function postSchedularData(dataObj) {
         //add your code here....
 
         // Prepare documents to insert for each selected seat
-        const documentsToInsert = selectedSeats.map(seatId => ({
+        const documentsToInsert = selectedSeats.map(seat => ({
             showId: showId,
-            seatId: typeof seatId === 'string' ? new ObjectId(seatId) : seatId,
+            seatId: typeof seat._id === 'string' ? new ObjectId(seat._id) : seat._id,
             paymentStatus: "pending", // Assuming updatedValue contains the payment status
             currentTime: new Date() // Current timestamp
         }));
