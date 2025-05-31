@@ -14,7 +14,7 @@ async function postSchedularData(dataObj) {
         const { movieId, screenId, showTime, selectedSeats, updatedValue } = dataObj;
     
         const db = client.db('local-cineflix');
-        const schedularData_collection = db.collection('schedulerData_collection');
+        const schedularData_collection = db.collection('schedularData_collection');
         const shows_collection = db.collection('shows_collection');
 
         const query = {
