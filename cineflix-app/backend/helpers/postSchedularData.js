@@ -36,7 +36,7 @@ async function postSchedularData(dataObj) {
             showId: showId,
             seatId: typeof seat._id === 'string' ? new ObjectId(seat._id) : seat._id,
             paymentStatus: "pending", // Assuming updatedValue contains the payment status
-            currentTime: new Date() // Current timestamp
+            entryTime: new Date() // Current timestamp
         }));
 
         // Insert all documents at once
