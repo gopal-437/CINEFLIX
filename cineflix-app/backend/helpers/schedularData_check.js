@@ -77,7 +77,7 @@ async function schedularData_check(seatIds, showId) {
         return {
             totalExpiredReservations: pendingReservations.length,
             releasedSeats: expiredSeatIds.map(id => id.toString()),
-            modifiedCount: updateResult?.modifiedCount || 0
+            // modifiedCount: updateResult?.modifiedCount || 0
         };
         
     } catch (error) {
