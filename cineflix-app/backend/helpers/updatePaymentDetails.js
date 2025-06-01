@@ -14,6 +14,7 @@ async function updatePaymentDetails(dataObj) {
         const shows_collection = db.collection('shows_collection');
         const user_collection = db.collection('user_collection');
         const booking_collection = db.collection('booking_collection');
+        const schedularData_collection = db.collection('schedularData_collection');
         
         // Prepare the payment document
         const paymentDocument = {
@@ -78,6 +79,24 @@ async function updatePaymentDetails(dataObj) {
             { _id: result.insertedId },
             { $set: { bookingId: result2.insertedId } }
         );
+
+        const bookedSeatIds = selectedSeats.map(seat => new ObjectId(seat._id));
+
+        // add code here ......
+        const updateResult3 = await schedularData_collection.updateMany(
+                {
+                    showId: showId,
+                    seatId: { $in: bookedSeatIds },
+                    paymentStatus: "pending"
+                },
+                {
+                    $set: {
+                        paymentStatus: "done",
+                    }
+                }
+            );
+
+        console.log(`Updated ${updateResult3.modifiedCount} pending reservations to 'done' status`);
 
         const resp = result2.insertedId;
 
