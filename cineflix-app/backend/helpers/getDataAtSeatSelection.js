@@ -1,5 +1,5 @@
 const { MongoClient, ObjectId } = require('mongodb');
-
+const { schedularData_check } = require('./schedularData_check');
 
 async function getDataAtSeatSelection(theaterId,movieId,screenId,showTime) {
     
@@ -46,6 +46,8 @@ async function getDataAtSeatSelection(theaterId,movieId,screenId,showTime) {
 
          // Extract seat IDs for query
        const seatIds = seatsData.map(seat => seat._id);
+
+       await schedularData_check(seatIds, showId);
     
     // Get all statuses for these seats in this show
        const seatStatuses = await showSeatStatus_collection.find({
@@ -64,20 +66,20 @@ async function getDataAtSeatSelection(theaterId,movieId,screenId,showTime) {
         });
         });
 
-    // Add status field to each seat object
-    const seatsDataf = seatsData.map(seat => {
-      const statusInfo = statusMap.get(seat._id.toString()) || {
-        status: 'available',
-        currentPrice: seat.basePrice || 0 // Default price if not specified
-      };
-      
-      return {
-        ...seat,
-        status: statusInfo.status,
-        currentPrice: statusInfo.currentPrice
-      };
+        // Add status field to each seat object
+        const seatsDataf = seatsData.map(seat => {
+        const statusInfo = statusMap.get(seat._id.toString()) || {
+            status: 'available',
+            currentPrice: seat.basePrice || 0 // Default price if not specified
+        };
+        
+        return {
+            ...seat,
+            status: statusInfo.status,
+            currentPrice: statusInfo.currentPrice
+        };
 
-    });
+        });
 
         return {movieData, theaterData, seatsDataf};
     } catch (error) {
