@@ -19,6 +19,8 @@ async function schedularData_check(seatIds, showId) {
         const cutoffTime = new Date();
         cutoffTime.setMinutes(cutoffTime.getMinutes() - PENDING_RESERVATION_THRESHOLD_MINUTES);
 
+        console.log(`Cutoff time for pending reservations: ${cutoffTime}`);
+
         // Convert string IDs to ObjectId
         const seatObjectIds = seatIds.map(id => new ObjectId(id));
         const showObjectId = new ObjectId(showId);
