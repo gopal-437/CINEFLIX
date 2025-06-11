@@ -1,0 +1,33 @@
+version: '3'
+services:
+
+  backend:
+    build: ./backend
+    container_name: backend-container
+    ports:
+      - "5000:5000"
+    # Use env_file to load backend-specific environment variables
+    env_file:
+      - ./backend/backend.env
+    environment:
+      # Override or add MONGO_URI environment variable to point to remote MongoDB Atlas
+      - MONGO_URI=mongodb+srv://gopal5235:Gopal%405235@cluster0.sq9x3fh.mongodb.net/mydatabase
+    depends_on:
+      # mongo service removed, so no depends_on here
+      # - mongo
+      []
+
+  frontend:
+    build: ./front-end
+    container_name: frontend-container
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    # Use env_file to load frontend-specific environment variables
+    env_file:
+      - ./front-end/.env
+
+# Volumes section for mongo-data can be removed since mongo service is removed
+# volumes:
+#   mongo-data:
