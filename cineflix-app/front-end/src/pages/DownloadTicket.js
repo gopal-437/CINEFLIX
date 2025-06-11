@@ -21,6 +21,7 @@ const DownloadTicket = () => {
   const screenName = useSelector((state) => state.appContext.screenName);
   const totalCost = useSelector((state) => state.appContext.totalCost);
   const selectedSeatsByUser = useSelector((state) => state.appContext.selectedSeatsByUser);
+  const userEmail = useSelector((state) => state.appContext.userEmail); 
 
   const seatNames = selectedSeatsByUser.map((seat) => seat.row + seat.seatNumber);
 
@@ -77,7 +78,7 @@ const DownloadTicket = () => {
       };
 
       setTicketData(preapareTicketData);
-      sendTicketEmail("gopalvaghela931@gmail.com", preapareTicketData);
+      sendTicketEmail(userEmail, preapareTicketData);
 
     }
     catch {
