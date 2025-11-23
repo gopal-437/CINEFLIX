@@ -142,7 +142,7 @@ app.post('/signin/submit-form', async (req, res) => {
     if (!user) {
       return res.json({
         success: false,
-        message: 'Invalid credentials'
+        message: 'Invalid credentials - Email not found'
       });
     }
 
@@ -151,7 +151,7 @@ app.post('/signin/submit-form', async (req, res) => {
     if (user.password !== password) {
       return res.json({
         success: false,
-        message: 'Invalid credentials'
+        message: 'Invalid credentials - Incorrect password'
       });
     }
 

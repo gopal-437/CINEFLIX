@@ -183,7 +183,7 @@ const AdminDashboard = () => {
       const selectedTheater = theaters.find(t => t.name=== value);
       setTheatersId(selectedTheater?._id);
       setScreenId(null);
-      setScreens([]);
+      // setScreens([]);
       formData.screen = '';
     }
     if (name === "screen") {

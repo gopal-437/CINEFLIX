@@ -75,7 +75,7 @@ const handleSubmit = async (e) => {
   setLoading(false);
 }
 
-  console.log("backend url", process.env.REACT_APP_BACKEND_URL);
+  // console.log("backend url", process.env.REACT_APP_BACKEND_URL);
 
   return (
     <div className={styles.loginContainer}>
