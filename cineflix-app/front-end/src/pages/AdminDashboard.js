@@ -76,6 +76,7 @@ const AdminDashboard = () => {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
+      console.log("fetched screens: ", data);
       setScreens(data);
     } catch (error) {
       console.error('Error fetching screen details:', error);
@@ -184,7 +185,10 @@ const AdminDashboard = () => {
       setTheatersId(selectedTheater?._id);
       setScreenId(null);
       // setScreens([]);
-      formData.screen = '';
+      setFormData(prev => ({
+      ...prev,
+      "screen" : ''
+      }));
     }
     if (name === "screen") {
       // Similarly for screen
