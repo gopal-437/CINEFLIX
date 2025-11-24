@@ -128,11 +128,14 @@ const AdminDashboard = () => {
         })
       });
       console.log("response from adding show details: ", response);
-      // if (!response.ok) {
-      //   // Use the error message from backend response
-      //   throw new Error(data.error || 'Network response was not ok');
-      // }
+      
       const data = await response.json();
+
+      if (!response.ok) {
+        console.log("Error response:", data);
+        throw new Error(data.error || 'Something went wrong');
+      }
+
       setShowAlert(true);
       setTimeout(() => setShowAlert(false), 3000);
     } catch (error) {
