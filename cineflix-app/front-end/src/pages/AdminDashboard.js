@@ -127,10 +127,11 @@ const AdminDashboard = () => {
           price: formData.price,
         })
       });
-      if (!response.ok) {
-        // Use the error message from backend response
-        throw new Error(data.error || 'Network response was not ok');
-      }
+      console.log("response from adding show details: ", response);
+      // if (!response.ok) {
+      //   // Use the error message from backend response
+      //   throw new Error(data.error || 'Network response was not ok');
+      // }
       const data = await response.json();
       setShowAlert(true);
       setTimeout(() => setShowAlert(false), 3000);
