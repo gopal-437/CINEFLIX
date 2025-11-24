@@ -28,4 +28,4 @@ module.exports = {getCitiesData};
 
 
 
-// test auto dep - after fix
+// test auto dep - after fix 3.0
