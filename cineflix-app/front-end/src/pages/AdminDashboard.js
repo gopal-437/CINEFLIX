@@ -128,14 +128,15 @@ const AdminDashboard = () => {
         })
       });
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        // Use the error message from backend response
+        throw new Error(data.error || 'Network response was not ok');
       }
       const data = await response.json();
       setShowAlert(true);
       setTimeout(() => setShowAlert(false), 3000);
     } catch (error) {
       console.error('Error adding show details:', error.message);
-      alert('Error adding show details.',error.message);
+      alert(`Error adding show details: ${error.message}`);
     }
 
     setLoading(false); // Set loading to false when fetching ends
