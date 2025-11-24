@@ -14,7 +14,7 @@ async function readJSONFile(filePath) {
 
 // Usage
 const getCitiesData = async () => {
-    const filePath = './helpers/data/cities.json'; // Adjust path as needed
+    const filePath = './helpers/data/cities.json'; 
     const jsonData = await readJSONFile(filePath);
     
     const cities = jsonData.map(city => {

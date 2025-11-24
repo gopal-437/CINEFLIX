@@ -134,8 +134,8 @@ const AdminDashboard = () => {
       setShowAlert(true);
       setTimeout(() => setShowAlert(false), 3000);
     } catch (error) {
-      console.error('Error adding show details:', error);
-      alert('Error adding show details. Please try again.');
+      console.error('Error adding show details:', error.message);
+      alert('Error adding show details.',error.message);
     }
 
     setLoading(false); // Set loading to false when fetching ends

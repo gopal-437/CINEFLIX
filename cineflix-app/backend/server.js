@@ -181,8 +181,6 @@ app.get('/api/cities', async (req, res) => {
 
   // console.log("req header",req.headers.cookie);
 
-  console.log("should ne printedded");
-
   try{
   const cities = await getCitiesData(); 
   res.status(200).json(cities);
@@ -349,7 +347,7 @@ app.post('/api/addshowdetails', async (req, res) => {
     const data = await addShowDetails(req.body); 
     res.status(200).json(data);
   } catch (error) { 
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: error.message });
   }
 });
 
