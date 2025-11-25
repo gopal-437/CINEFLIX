@@ -44,6 +44,7 @@ const CitySelector = () => {
       alert(`Submitted: ${selectedOption.label}`);
     } else {
       alert('Please select an option');
+      return;
     }
 
     setUserLocation(selectedOption.label); // Set the user location in the context
