@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom';
 import DateInput from './DateInput';
 
 const MovieApp = () => {
-  const [searchActive, setSearchActive] = useState(false);
-  const searchContainerRef = useRef(null);
-  const searchInputRef = useRef(null);
-  const [moviesData, setMoviesData] = useState([]); // State to hold movies data
+  const [searchActive, setSearchActive] = useState(false); // we want to track whether search is active or not
+  const searchContainerRef = useRef(null); // for effect
+  const searchInputRef = useRef(null); // for effect
+  const [moviesData, setMoviesData] = useState([]); // State to hold filtered movies data
   const [searchTerm, setSearchTerm] = useState(''); // State to hold search term
   const [moviesDataall, setMoviesDataall] = useState([]); // State to hold all movies data
 

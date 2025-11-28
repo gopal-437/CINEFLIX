@@ -110,7 +110,7 @@ const ProfilePage = () => {
    
   }
 
-  const toggleEdit = async () => {
+  const toggleEdit = async () => { // calling fetch profile details to reset data on cancel
     await fetchProfileDetails();
     setIsEditing(!isEditing);
   };
