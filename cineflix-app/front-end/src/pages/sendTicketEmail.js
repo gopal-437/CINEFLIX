@@ -19,7 +19,7 @@ async function sendTicketEmail(userEmail, ticketData) {
         ticketData,
         emailHtml,
       });
-      console.log(response.data.message); // "Email sent successfully!"
+      console.log("send mail api res",response.data.message); // "Email sent successfully!"
       return response.data;
 
   } catch (error) {

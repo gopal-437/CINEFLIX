@@ -50,7 +50,7 @@ const SignupPage = () => {
         return '';
       case 'phoneNumber':
         if (!value.trim()) return 'Phone number is required';
-        if (!/^[0-9]{10,15}$/.test(value)) return 'Phone number must be 10-15 digits';
+        if (!/^[0-9]{10}$/.test(value)) return 'Phone number must be 10 digits';
         return '';
       case 'password':
         if (!value) return 'Password is required';
