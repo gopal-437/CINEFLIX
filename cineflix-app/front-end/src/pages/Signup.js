@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import styles from '../styles/Signup.module.css'; // Adjust the import path as needed
 import AppContextProvider from '../redux/appContext/dispatchActionProvider'; // Import your custom hook
+import { useNavigate } from 'react-router-dom';
 
 const SignupPage = () => {
   const [isHovered, setIsHovered] = useState(false);
