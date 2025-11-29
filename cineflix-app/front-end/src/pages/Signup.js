@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
 import styles from '../styles/Signup.module.css'; // Adjust the import path as needed
+import AppContextProvider from '../redux/appContext/dispatchActionProvider'; // Import your custom hook
 
-const SignupPage = ({ loginClickHandler }) => {
+const SignupPage = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
@@ -14,6 +15,11 @@ const SignupPage = ({ loginClickHandler }) => {
     agreedToTerms: false
   });
 
+  const navigate = useNavigate();
+
+  const { setLoading
+  } = AppContextProvider();
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData(prev => ({
@@ -24,7 +30,7 @@ const SignupPage = ({ loginClickHandler }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     // Validate all fields before submission
 
   const newErrors = {};
@@ -43,6 +49,8 @@ const SignupPage = ({ loginClickHandler }) => {
     alert(`${firstError}`);
     return;
   }
+
+    setLoading(true);
     
     try {
 
@@ -69,16 +77,21 @@ const SignupPage = ({ loginClickHandler }) => {
 
       if(response.data.success == false) {
         alert(response.data.message);
+        setLoading(false);
         return; 
       }
       
       console.log('Form submitted successfully:', response.data);
       alert('Form submitted successfully!');
+
+      navigate("/login");
       
     } catch (error) {
       console.error('Error submitting form:', error);
       alert('Failed to submit form. Please try again.');
     }
+
+    setLoading(false);
   };
 
   const validateField = (name, value) => {
@@ -263,7 +276,7 @@ const SignupPage = ({ loginClickHandler }) => {
         <button type="submit" className={styles['button-submit']} >Sign Up</button>
 
         {/* Login Link */}
-        <p className={styles.p}>Already have an account? <span className={styles.span} onClick={loginClickHandler}>Log In</span></p>
+        <p className={styles.p}>Already have an account? <span className={styles.span} onClick={() => {navigate('/login')}}>Log In</span></p>
       </form>
     </div>
   );
