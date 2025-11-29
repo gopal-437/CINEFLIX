@@ -282,8 +282,10 @@ app.post('/api/send-ticket', async (req, res) => {
 
     // Send email
     await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully to', userEmail);
     res.json({ success: true, message: "Email sent successfully!" });
   } catch (error) {
+    console.error('Error sending email:', error);
     res.status(500).json({ error: error.message });
   }
 });
