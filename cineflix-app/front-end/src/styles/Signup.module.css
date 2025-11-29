@@ -184,3 +184,98 @@
       gap: 12px;
     }
   }
+
+  /* Error Styles */
+.inputError {
+  border-color: #e74c3c !important;
+  background-color: #fdf2f2;
+}
+
+.inputError:hover {
+  border-color: #e74c3c !important;
+  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.1) !important;
+}
+
+.inputError:focus-within {
+  border-color: #e74c3c !important;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.1) !important;
+}
+
+.checkboxError {
+  outline: 2px solid #e74c3c;
+  outline-offset: 1px;
+}
+
+.errorMessage {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.errorMessage::before {
+  content: '⚠';
+  font-size: 10px;
+}
+
+/* Adjust form gap for error messages */
+.form {
+  gap: 8px; /* Reduced from 12px to accommodate error messages */
+}
+
+/* Ensure proper spacing for columns with errors */
+.columnField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Disabled Button Styles */
+.buttonDisabled {
+  background-color: #bdc3c7 !important;
+  color: #7f8c8d !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.buttonDisabled:hover {
+  background-color: #bdc3c7 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Optional: Add a tooltip for disabled state */
+.buttonDisabled {
+  position: relative;
+}
+
+.buttonDisabled:hover::after {
+  content: 'Please fill all fields correctly';
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #34495e;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+.buttonDisabled:hover::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #34495e;
+  z-index: 1000;
+}
