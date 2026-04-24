@@ -49,12 +49,38 @@ const razorpay = new Razorpay({
   key_secret: process.env.RAZORPAY_SECRET
 });
 
-const transporter = nodemailer.createTransport({
-  service: 'Gmail', // You can also use 'Outlook', 'Yahoo', etc.
+const transporterOptions = {
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
   auth: {
-    user: `${process.env.NODE_MAILER_USER}`, // Your email (stored in .env)
-    pass: `${process.env.NODE_MAILER_PASS}`, // Your app password (not regular password)
+    user: process.env.NODE_MAILER_USER,
+    pass: process.env.NODE_MAILER_PASS,
   },
+};
+
+if (
+  process.env.NODE_MAILER_OAUTH2_CLIENT_ID &&
+  process.env.NODE_MAILER_OAUTH2_CLIENT_SECRET &&
+  process.env.NODE_MAILER_OAUTH2_REFRESH_TOKEN
+) {
+  transporterOptions.auth = {
+    type: 'OAuth2',
+    user: process.env.NODE_MAILER_USER,
+    clientId: process.env.NODE_MAILER_OAUTH2_CLIENT_ID,
+    clientSecret: process.env.NODE_MAILER_OAUTH2_CLIENT_SECRET,
+    refreshToken: process.env.NODE_MAILER_OAUTH2_REFRESH_TOKEN,
+  };
+}
+
+const transporter = nodemailer.createTransport(transporterOptions);
+
+transporter.verify((error, success) => {
+  if (error) {
+    console.error('Nodemailer transporter verification failed:', error);
+  } else {
+    console.log('Nodemailer transporter verified successfully');
+  }
 });
 
 
@@ -267,7 +293,7 @@ app.post('/api/send-ticket', async (req, res) => {
     const pdfBuffer = await generatePDF(ticketData);
     
     const mailOptions = {
-      from: `"BookMyShow Clone" <${"gopalvaghela931@gmail.com"}>`,
+      from: `"BookMyShow Clone" <${process.env.NODE_MAILER_USER}>`,
       to: userEmail,
       subject: `Your Ticket for ${ticketData.movie.title}`,
       html: emailHtml, // Your HTML template
