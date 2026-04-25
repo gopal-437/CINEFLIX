@@ -21,7 +21,7 @@ def _trim_data(data, keys_to_keep, max_items=20):
 
 async def get_cities() -> str:
     """Gets a list of all available cities for movie bookings."""
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(timeout=60.0) as client:
         try:
             response = await client.get(f"{BACKEND_URL}/api/cities")
             response.raise_for_status()
@@ -40,7 +40,7 @@ async def get_movies_by_city_and_date(city: str, date: str) -> str:
         city: Name of the city (e.g. Pune, Mumbai).
         date: Date in string format (e.g. 2026-05-01 or Date string)
     """
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(timeout=60.0) as client:
         try:
             response = await client.get(f"{BACKEND_URL}/api/movieslist", params={"city": city, "date": date})
             response.raise_for_status()
@@ -52,7 +52,7 @@ async def get_movies_by_city_and_date(city: str, date: str) -> str:
 
 async def get_theaters_by_city(city: str) -> str:
     """Gets theaters available in a specific city."""
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(timeout=60.0) as client:
         try:
             response = await client.get(f"{BACKEND_URL}/api/theaterdatabycity", params={"city": city})
             response.raise_for_status()
@@ -71,7 +71,7 @@ async def check_seat_availability(theater_id: str, movie_id: str, screen_id: str
         screen_id: ID of the screen.
         show_time: Show time string.
     """
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(timeout=60.0) as client:
         try:
             params = {
                 "theaterId": theater_id,
@@ -98,7 +98,7 @@ async def get_movie_showtimes(city: str, movie_id: str, date: str) -> str:
         movie_id: ID of the movie.
         date: Date in string format (e.g. 2026-05-01 or Date string)
     """
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(timeout=60.0) as client:
         try:
             response = await client.get(f"{BACKEND_URL}/api/getmoviedetails", params={"city": city, "movieid": movie_id, "date": date})
             response.raise_for_status()
