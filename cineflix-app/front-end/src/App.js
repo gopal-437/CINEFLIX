@@ -4,6 +4,7 @@ import AppRoutes from './routes/AppRoutes';
 import { useState } from 'react';
 import Loader from './pages/Loader';
 import { useSelector } from 'react-redux';
+import AgentChatWidget from './components/AgentChatWidget';
 // import AppContextProvider from './redux/appContext/dispatchActionProvider'; // Import your custom hook
 
 
@@ -24,6 +25,9 @@ function App() {
             <Loader />
           </div>
         )}
+
+        {/* Global Agent Chat Widget */}
+        <AgentChatWidget />
       </BrowserRouter>
     </div>
   );

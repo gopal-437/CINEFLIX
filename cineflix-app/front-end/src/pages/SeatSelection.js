@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/SeatSelection.module.css';
 import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import AppContextProvider from '../redux/appContext/dispatchActionProvider'; // Import your custom hook
 import Gpay from './Gpay'
 import DownloadTicket from './DownloadTicket';
@@ -28,6 +28,7 @@ const SeatSelection = () => {
   const [movieData, setMovieData] = useState(null);
   const [theaterData, setTheaterData] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { setLoading, setTotalCost, setSelectedSeatsByUser
   } = AppContextProvider(); // Use the custom hook to get the setLoading function
@@ -149,6 +150,15 @@ const SeatSelection = () => {
       setMovieData(data.movieData);
       setTheaterData(data.theaterData);
       setSeats(data.seatsDataf);
+
+      // Agent Handoff: Pre-fill seats if provided via router state
+      if (location.state?.preSelectedSeats && location.state.preSelectedSeats.length > 0) {
+        const preSelectedObjects = data.seatsDataf.filter(s => 
+          location.state.preSelectedSeats.includes(`${s.row}${s.seatNumber}`)
+        );
+        setSelectedSeats(preSelectedObjects);
+      }
+
     } catch (error) {
       console.error('Error fetching movie details:', error);
     }
