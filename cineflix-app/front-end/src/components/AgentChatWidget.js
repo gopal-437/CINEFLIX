@@ -33,7 +33,7 @@ const AgentChatWidget = () => {
     setIsTyping(true);
 
     try {
-      const response = await fetch('http://localhost:8000/api/chat', {
+      const response = await fetch('https://cineflix-agent.onrender.com/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
