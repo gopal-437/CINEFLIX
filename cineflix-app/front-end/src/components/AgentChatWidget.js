@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import AppContextProvider from '../redux/appContext/dispatchActionProvider';
 import './AgentChatWidget.css';
 
@@ -16,6 +17,7 @@ const AgentChatWidget = () => {
   
   // Custom hook for Redux
   const dispatchActions = AppContextProvider();
+  const userEmail = useSelector((state) => state.appContext.userEmail);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -75,9 +77,14 @@ const AgentChatWidget = () => {
     // Setting a slight timeout to let user see the final message before jumping
     setTimeout(() => {
         setIsOpen(false);
-        navigate(`/user/movie/${intentData.movieId}/seatselection`, {
-            state: { preSelectedSeats: intentData.preSelectedSeats || [] }
-        });
+        if (userEmail) {
+            navigate(`/user/movie/${intentData.movieId}/seatselection`, {
+                state: { preSelectedSeats: intentData.preSelectedSeats || [] }
+            });
+        } else {
+            alert("Please login to proceed with booking.");
+            navigate('/login');
+        }
     }, 2000);
   };
 

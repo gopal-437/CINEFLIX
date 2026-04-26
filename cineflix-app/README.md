@@ -1,76 +1,62 @@
-# Getting Started with Create React App
+# 🎬 CINEFLIX - Smart Movie Booking App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Cineflix is a modern, full-stack movie ticketing application equipped with an advanced AI Booking Agent. It allows users to browse movies, find available theaters and showtimes, and book seats seamlessly.
 
-## Available Scripts
+## ✨ Features
+- **AI Booking Agent:** An integrated AI assistant that helps users discover movies, find showtimes, and initiates checkout for selected seats—all through natural conversation.
+- **Seat Selection:** Interactive seat mapping to easily pick and review available seats before booking.
+- **Smart Search & Filters:** Find movies playing in specific cities and on particular dates.
+- **User Authentication:** Secure user sign-up, login, and profile management.
+- **Responsive UI:** Built with React, offering a mobile-friendly and interactive user experience.
 
-In the project directory, you can run:
+## 🛠️ Technology Stack
+- **Frontend:** React.js, Redux (for state management), React Router
+- **Backend:** Node.js / Express (handling business logic and MongoDB connections)
+- **AI Agent Service:** Python, FastAPI, Langchain, Groq LLM (LLaMA-3)
+- **Database:** MongoDB
 
-### `npm start`
+## 🚀 Deployment
+- **Frontend:** Deployed and hosted on [Vercel](https://vercel.com).
+- **Backend Service:** Deployed on [Render](https://render.com).
+- **AI Agent Service:** Deployed on [Render](https://render.com) (communicates with the Node.js backend to fetch live availability data).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 💻 Running Locally
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Prerequisites
+- Node.js (v16+)
+- Python (3.10+)
+- MongoDB (Running locally or a cloud URI)
 
-### `npm test`
+### 1. Start the Backend Server
+```bash
+cd backend
+npm install
+npm start
+```
+*Ensure you have your `.env` file configured with your Database URI and any necessary API keys.*
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 2. Start the AI Agent Service
+```bash
+cd agent
+pip install -r requirements.txt
+# Requires GROQ_API_KEY in agent/.env
+uvicorn main:app --reload --port 8000
+```
 
-### `npm run build`
+### 3. Start the Frontend Application
+```bash
+cd front-end
+npm install
+npm start
+```
+The frontend will run at `http://localhost:3000`. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🤖 How the AI Agent Works
+The AI Assistant lives as a floating chat widget in the frontend. When a user asks a query (e.g., "Book 2 seats for Dunki in Pune tomorrow"):
+1. The frontend sends the chat history to the Python FastAPI Agent service.
+2. The Agent uses Groq's LLaMA model and function calling to hit the Node.js backend APIs.
+3. The Agent fetches the cities, theaters, exact showtimes, and seat availability directly from the database.
+4. Once the user confirms, the Agent issues a `CHECKOUT_INTENT`, which the frontend intercepts to automatically route the user to the seat selection checkout gateway!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-
-# additional infor
-
-frontend is deployed in vercel
-backend is deployed in render
+---
+*Created with ❤️ by the Cineflix Team.*
